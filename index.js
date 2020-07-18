@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
   appBar: {
-      marginBottom: '4px',
+      marginBottom: '4px'
   },
   paper: {
     padding: theme.spacing(1),
@@ -84,8 +84,28 @@ const App = () => {
             <IconButton edge="start" className={classes.menuButton} color="inherit">
               <MenuIcon />
             </IconButton>
+            <Button
+              variant='outlined'
+                style={{maxWidth: '45px', maxHeight: '45px', minWidth: '45px', minHeight: '45px', fontSize: '40px', marginRight: '40px'}}
+                onClick={() => setHole(hole === 1 ? 18 : hole - 1)}
+            >
+              &lt;
+            </Button>
             <Typography variant="h6" className={classes.title}>
-              Hole #1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Men's Tees &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Par 4
+              Hole #1
+            </Typography>
+            <Button
+              variant='outlined'
+                style={{maxWidth: '45px', maxHeight: '45px', minWidth: '45px', minHeight: '45px', fontSize: '40px', marginRight: '40px'}}
+                onClick={() => setHole(hole === 1 ? 18 : hole - 1)}
+            >
+              &gt;
+            </Button>
+            <Typography variant="h6" className={classes.title}>
+              Par 4
+            </Typography>
+            <Typography variant="h6" className={classes.title}>
+              Men's Tees
             </Typography>
             <IconButton edge="end" className={classes.settingsButton} color="inherit">
               <AssignmentIcon />
@@ -104,20 +124,14 @@ const App = () => {
           spacing={1}
       >
         <Grid item xs={12 }>
-          <Paper className={classes.paper}>
             <RatingForm />
-          </Paper>
         </Grid>
       </Grid>
         <Grid item xs={2} hidden={true}>
-          <Paper className={classes.paper}>
             <Zones />
-          </Paper>
         </Grid>
         <Grid item xs={10} hidden={true}>
-          <Paper className={classes.paper}>
             <Ratings />
-          </Paper>
         </Grid>
     </ThemeProvider>
   );

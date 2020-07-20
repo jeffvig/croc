@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+const maxLength = (max, p) => p.length > max ? p.length : max
+
 function debounce(fn, ms) {
   let timer
   return _ => {
@@ -26,6 +28,14 @@ function debounce(fn, ms) {
     }, ms)
   };
 }
+const gender = 'M'
+const tees = [
+              { name: 'Black', length: '369'},
+              { name: 'Blue', length: '329'},
+              { name: 'White', length: '286'},
+              { name: 'Red', length: '256'},
+              { name: 'Green', length: '236'},
+            ]
 
 const row = [
               {title: 'Length', parent: 'false'},
@@ -111,210 +121,50 @@ export default function RatingForm() {
 
 //  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
 
-  const toolbarHeight = 64
   const widthPadding = 16
-  const labelWidth = dimensions.width * .39
-  let cellWidth = dimensions.width * .07
-  cellWidth -= 1
+  const cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (tees.length * 2))
+  const labelWidth = dimensions.width - widthPadding - (cellWidth * (tees.length * 2))
 
+  const toolbarHeight = 64
+  const rowHeightPadding = 22
+  const outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
+  const rowHeight = ((Math.floor(outerGridHeight / 2)) - 2)
+  const innerGridHeight = (rowHeight * 2) - rowHeight + 2
+
+  const longestTee = tees.reduce(maxLength, -Infinity)
+  console.log('longestTee: ', longestTee)
+  //const maxLZs = 
+  
   return (
-    <Paper elevation={0} style={{height: '800px', overflowY: 'auto'}} className={classes.paper}>
+    <Paper elevation={0} style={{width: '100%', height: outerGridHeight, overflowY: 'auto'}} className={classes.paper}>
       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth}}>Tee</Button>
-        <Button style={{width: cellWidth * 2}}>Black</Button>
-        <Button style={{width: cellWidth * 2}}>Blue</Button>
-        <Button style={{width: cellWidth * 2}}>Green</Button>
-        <Button style={{width: cellWidth * 2}}>Red</Button>
+        <Button style={{height: rowHeight, width: labelWidth}}>Tee</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Button style={{width: cellWidth * 2}}>{tees[index].name}</Button>
+          );
+        })}
       </ButtonGroup>
-      <Paper square style={{height: '700px', overflowY: 'auto'}} >
+      <Paper elevation={0} square style={{width: '100%', height: innerGridHeight, overflowY: 'auto'}} >
       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}><Typography float='right' variant='caption'>Length</Typography></Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
+        <Button style={{width: labelWidth}}>Length</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Button style={{height: rowHeight, width: cellWidth * 2}}>{tees[index].length}</Button>
+          );
+        })}
       </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth, marginRight: '1px'}}>Tee</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-        <Button style={{width: cellWidth}}>&nbsp;</Button>
-      </ButtonGroup>
-      </Paper>
+      {/*
+      <div>dimension.height: {JSON.stringify(dimensions.height)}</div>
+      <div>rowHeight: {JSON.stringify(rowHeight)}</div>
+      <div>outerGridHeight: {JSON.stringify(outerGridHeight)}</div>
+      <div>innerGridHeight: {JSON.stringify(innerGridHeight)}</div>
+      <div>dimension.width: {JSON.stringify(dimensions.width)}</div>
+      <div>labelWidth: {JSON.stringify(labelWidth)}</div>
+      <div>cellWidth: {JSON.stringify(cellWidth)}</div>
+      <div>total width: {JSON.stringify(labelWidth + (cellWidth*(tees.length*2)))}</div>
+      */}
+     </Paper>
     </Paper>
   );
 }

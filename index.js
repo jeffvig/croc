@@ -71,6 +71,33 @@ const useStyles = makeStyles(theme => ({
 //   },
 // });
 
+const hole_info = {
+  green_width: 0,
+  green_depth: 0,
+  green_shape: '',
+  green_eff_diameter: 0,
+}
+
+const data = {
+  team_members: '',
+  green_speed: '',
+  rought_height: '',
+  gender: '',
+  hole: [
+    {
+      tee: [
+        {
+          name: '',
+          length: '',
+          scratch: {
+          },
+          bogey: {
+          }
+        }
+      ]
+    }
+  ]
+}
 const App = () => {
 
   const [fruit, setFruit] = useLocalState('Fruit');

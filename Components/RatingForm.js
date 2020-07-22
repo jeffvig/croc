@@ -109,7 +109,7 @@ export default function RatingForm() {
         height: window.innerHeight,
         width: window.innerWidth
       })
-      console.log('screen height: ', dimensions.height, 'screen width: ', dimensions.width)
+      //console.log('screen height: ', dimensions.height, 'screen width: ', dimensions.width)
     }, 1000)
 
     window.addEventListener('resize', debouncedHandleResize)

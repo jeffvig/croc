@@ -71,37 +71,74 @@ const useStyles = makeStyles(theme => ({
 //   },
 // });
 
-const hole_info = {
+const tees = [
+              { name: 'Black', length: '369'},
+              { name: 'Blue', length: '329'},
+              { name: 'White', length: '286'},
+              { name: 'Red', length: '256'},
+              { name: 'Green', length: '236'},
+            ]
+
+const hole_model = 
+{
   green_width: 0,
   green_depth: 0,
   green_shape: '',
   green_eff_diameter: 0,
 }
 
-const data = {
+const tee_model = 
+{
+  name: '',
+  length: '',
+  scratch: {
+  },
+  bogey: {
+  }
+}
+
+const data_model = {
   team_members: '',
   green_speed: '',
   rought_height: '',
   gender: '',
-  hole: [
-    {
-      tee: [
-        {
-          name: '',
-          length: '',
-          scratch: {
-          },
-          bogey: {
-          }
-        }
-      ]
-    }
-  ]
+  hole: []
 }
 const App = () => {
+  const classes = useStyles();
+  const [data, setData] = useState({})
 
   const [fruit, setFruit] = useLocalState('Fruit');
-  const classes = useStyles();
+
+  //Create data object
+  const _data = JSON.parse(JSON.stringify(data_model))
+  const _holeArray = [];
+  for (let holeNumber = 0; holeNumber < 19; holeNumber++) {
+    if (holeNumber > 0) {
+      const _teeArray = [];
+      for (let teeNumber = 0; teeNumber < tees.length; teeNumber++) {
+        const _tee = JSON.parse(JSON.stringify(tee_model))
+        _tee.name = tees[teeNumber].name
+        _tee.length = tees[teeNumber].length
+        _tee.scratch = {...hole_model}
+        _tee.bogey = {...hole_model}
+        _teeArray.push(_tee)
+    //    console.log('_teeArray: ', _teeArray)
+      }
+      _holeArray.push(_teeArray)
+    } else {
+      const _teeArray = [];
+      const _tee = JSON.parse(JSON.stringify(tee_model))
+      _tee.name = 'Empty'
+      _tee.length = 0
+      _tee.scratch = {}
+      _tee.bogey = {}
+      _teeArray.push(_tee)
+      _holeArray.push(_teeArray)
+    }
+  }
+  _data.hole = _holeArray
+  console.log('_data: ', _data)
 
   return (
     <ThemeProvider theme={theme}>

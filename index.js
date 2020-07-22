@@ -185,7 +185,7 @@ const App = () => {
               Par 4
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              Men's Tees
+              {data.gender === 'M' ? 'M' : 'Wom'}en's Tees
             </Typography>
             <IconButton edge="end" className={classes.settingsButton} color="inherit">
               <AssignmentIcon />
@@ -206,6 +206,7 @@ const App = () => {
         <Grid item xs={12 }>
             <RatingForm 
               _data={data} 
+              onDataChange={(e) => { ondatachanges(e) }} 
             />
         </Grid>
         {/* 

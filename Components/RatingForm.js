@@ -28,7 +28,6 @@ function debounce(fn, ms) {
     }, ms)
   };
 }
-const gender = 'M'
 const tees = [
               { name: 'Black', length: '369'},
               { name: 'Blue', length: '329'},
@@ -89,10 +88,7 @@ const row = [
               {title: 'TREES', parent: 'false'},
               {title: 'Evaluation', parent: 'false'},
               {title: 'Adjustments', parent: 'false'},
-              {title: 'GREEN SURFACE', parent: 'false'},
-              {title: 'Lateral in LZ4', parent: 'false'},
-              {title: 'Lateral in LZ5', parent: 'false'},
-              {title: 'Lateral in LZ6', parent: 'false', allTees: 'true'},
+              {title: 'GREEN SURFACE', parent: 'false', allTees: 'true'},
             ]
 
 export default function RatingForm() {
@@ -121,20 +117,21 @@ export default function RatingForm() {
 
 //  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
 
+  const longestTee = tees.reduce(maxLength, -Infinity)
+  console.log('longestTee: ', longestTee)
+  //const maxLZs = 
+  
   const widthPadding = 16
   const cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (tees.length * 2))
   const labelWidth = dimensions.width - widthPadding - (cellWidth * (tees.length * 2))
 
+//Line height of 23 + (5 * maxLZs)
   const toolbarHeight = 64
   const rowHeightPadding = 22
   const outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
   const rowHeight = ((Math.floor(outerGridHeight / 2)) - 2)
   const innerGridHeight = (rowHeight * 2) - rowHeight + 2
 
-  const longestTee = tees.reduce(maxLength, -Infinity)
-  console.log('longestTee: ', longestTee)
-  //const maxLZs = 
-  
   return (
     <Paper elevation={0} style={{width: '100%', height: outerGridHeight, overflowY: 'auto'}} className={classes.paper}>
       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>

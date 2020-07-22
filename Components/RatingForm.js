@@ -97,6 +97,13 @@ export default function RatingForm( { _data } ) {
   const classes = useStyles();
   const [data, setData] = useState({})
   const [hole, setHole] = useState(1)
+  const [cellWidth, setCellWidth] = useState(1)
+  const [labelWidth, setLabelWidth] = useState(1)
+  const [outerGridHeight, setOuterGridHeight] = useState(1)
+  const [rowHeight, setRowHeight] = useState(1)
+  const [innerGridHeight, setInnerGridHeight] = useState(1)
+  const [numberOfRows, setNumberOfRows] = useState(1)
+  const [maxLZs, setMaxLZs] = useState(1)
 
   const [dimensions, setDimensions] = React.useState({ 
     height: window.innerHeight,
@@ -104,18 +111,9 @@ export default function RatingForm( { _data } ) {
   })
 
   const widthPadding = 16
-  let cellWidth = 1
-  let labelWidth = 1
-
   const toolbarHeight = 64
   const rowHeightPadding = 22
-  let outerGridHeight = 1
-  let rowHeight = 1
-  let innerGridHeight = 1
-  let numberOfRows = 1
-  let maxLZs = 0
-  let longestTee = 1
-
+  let longestTee = 0
   let driveLength = 200
   let subsequentShotLength = 170
 
@@ -123,8 +121,10 @@ export default function RatingForm( { _data } ) {
     //console.log('calculateDimensions', height, width, _data)
 
     //console.log('tees length: ', _data.hole[_data.currentHole].tee.length)
-    cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (_data.hole[_data.currentHole].tee.length * 2))
-    labelWidth = dimensions.width - widthPadding - (cellWidth * (_data.hole[_data.currentHole].tee.length * 2))
+    const _cellWidth = Math.floor(((width - widthPadding) * .7) / (_data.hole[_data.currentHole].tee.length * 2))
+    setCellWidth(_cellWidth)
+    const _labelWidth = width - widthPadding - (_cellWidth * (_data.hole[_data.currentHole].tee.length * 2))
+    setLabelWidth(_labelWidth)
 
     if (_data.gender === 'M') {
       driveLength = 200
@@ -135,13 +135,19 @@ export default function RatingForm( { _data } ) {
     }
 
     longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
-    maxLZs = ( longestTee < driveLength ? 0 : (Math.floor((longestTee - driveLength) / subsequentShotLength)) + 1 )
-    numberOfRows = 3 + (5 * maxLZs)
+    const _maxLZs = ( longestTee < driveLength ? 0 : (Math.floor((longestTee - driveLength) / subsequentShotLength)) + 1 )
+    setMaxLZs(_maxLZs)
+    const _numberOfRows = (3 + (5 * _maxLZs))
+    setNumberOfRows(_numberOfRows)
 
-    outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
-    rowHeight = ((Math.floor(outerGridHeight / numberOfRows)) - 2)
-    innerGridHeight = (rowHeight * numberOfRows) - rowHeight + 2
+    const _outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
+    setOuterGridHeight(_outerGridHeight)
+    const _rowHeight = ((Math.floor(_outerGridHeight / _numberOfRows)) - 2)
+    setRowHeight(_rowHeight)
+    setInnerGridHeight((_rowHeight * _numberOfRows) - _rowHeight + 2)
 
+    console.log('height: ', height)
+    console.log('width: ', width)
     console.log('numberOfRows: ', numberOfRows)
     console.log('outerGridHeight: ', outerGridHeight)
     console.log('rowHeight: ', rowHeight)

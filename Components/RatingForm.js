@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {useLocalState} from './hooks';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -78,6 +78,7 @@ const row = [
               {title: 'Crossing in LZ4', parent: 'false'},
               {title: 'Crossing in LZ5', parent: 'false'},
               {title: 'Crossing in LZ6', parent: 'false'},
+              {title: 'Crossing to Green', parent: 'false'},
               {title: 'LATERAL', parent: 'false'},
               {title: 'Lateral in LZ1', parent: 'false'},
               {title: 'Lateral in LZ2', parent: 'false'},
@@ -85,21 +86,68 @@ const row = [
               {title: 'Lateral in LZ4', parent: 'false'},
               {title: 'Lateral in LZ5', parent: 'false'},
               {title: 'Lateral in LZ6', parent: 'false'},
+              {title: 'Lateral at Green', parent: 'false'},
               {title: 'TREES', parent: 'false'},
               {title: 'Evaluation', parent: 'false'},
               {title: 'Adjustments', parent: 'false'},
               {title: 'GREEN SURFACE', parent: 'false', allTees: 'true'},
             ]
 
-export default function RatingForm() {
+export default function RatingForm( { _data } ) {
   const classes = useStyles();
+  const [data, setData] = useState({})
+  const [hole, setHole] = useState(1)
 
   const [dimensions, setDimensions] = React.useState({ 
     height: window.innerHeight,
     width: window.innerWidth
   })
 
-  React.useEffect(() => {
+  const widthPadding = 16
+  let cellWidth = 1
+  let labelWidth = 1
+
+  const toolbarHeight = 64
+  const rowHeightPadding = 22
+  let outerGridHeight = 1
+  let rowHeight = 1
+  let innerGridHeight = 1
+
+  let driveLength = 200
+  let subsequentShotLength = 170
+
+  useEffect(() => {
+    if (_data.hasOwnProperty('hole')) {
+      // console.log('RF - UE - _data: ', _data)
+      setData(_data)
+
+      //console.log('tees length: ', _data.hole[_data.currentHole].tee.length)
+      cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (_data.hole[_data.currentHole].tee.length * 2))
+      labelWidth = dimensions.width - widthPadding - (cellWidth * (_data.hole[_data.currentHole].tee.length * 2))
+
+      if (_data.gender === 'M') {
+        driveLength = 200
+        subsequentShotLength = 170
+      } else {
+        driveLength = 150
+        subsequentShotLength = 130
+      }
+
+      const longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
+      const maxLZs = ( longestTee < driveLength ? 1 : (Math.floor((999 - driveLength) / subsequentShotLength)) + 2 )
+      console.log('maxLZs: ', maxLZs)
+
+    //Line height of 23 + (5 * maxLZs)
+      outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
+      rowHeight = ((Math.floor(outerGridHeight / 2)) - 2)
+      innerGridHeight = (rowHeight * 2) - rowHeight + 2
+
+    } else {
+      //console.log('RF - UE - null _data: ', _data)
+    }
+  },[_data]);
+
+  useEffect(() => {
     const debouncedHandleResize = debounce(function handleResize() {
       setDimensions({
         height: window.innerHeight,
@@ -116,21 +164,6 @@ export default function RatingForm() {
   }})
 
 //  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
-
-  const longestTee = tees.reduce(maxLength, -Infinity)
-  console.log('longestTee: ', longestTee)
-  //const maxLZs = 
-  
-  const widthPadding = 16
-  const cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (tees.length * 2))
-  const labelWidth = dimensions.width - widthPadding - (cellWidth * (tees.length * 2))
-
-//Line height of 23 + (5 * maxLZs)
-  const toolbarHeight = 64
-  const rowHeightPadding = 22
-  const outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
-  const rowHeight = ((Math.floor(outerGridHeight / 2)) - 2)
-  const innerGridHeight = (rowHeight * 2) - rowHeight + 2
 
   return (
     <Paper elevation={0} style={{width: '100%', height: outerGridHeight, overflowY: 'auto'}} className={classes.paper}>

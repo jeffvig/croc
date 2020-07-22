@@ -99,6 +99,7 @@ const tee_model =
 }
 
 const data_model = {
+  currentHole: 1,
   team_members: '',
   green_speed: '',
   rought_height: '',
@@ -127,7 +128,7 @@ const App = () => {
           _teeArray.push(_tee)
       //    console.log('_teeArray: ', _teeArray)
         }
-        _holeArray.push(_teeArray)
+        _holeArray.push({rating: 'true', tee: _teeArray})
       } else {
         const _teeArray = [];
         const _tee = JSON.parse(JSON.stringify(tee_model))
@@ -140,7 +141,7 @@ const App = () => {
       }
     }
     _data.hole = _holeArray
-    console.log('_data: ', _data)
+    // console.log('_data: ', _data)
     setData(_data)
   }
 
@@ -150,7 +151,7 @@ const App = () => {
   
     const ondatachanges = (_data) => {
       setData(_data)
-      console.log('Index - ondatachanges - data: ', _data)
+      // console.log('Index - ondatachanges - data: ', _data)
     //console.log('bottomNav received: ', playerList)
     // setPlayers(playerList)
     // setValue(0)

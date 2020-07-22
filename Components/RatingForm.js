@@ -140,7 +140,7 @@ export default function RatingForm( { _data } ) {
     const _numberOfRows = (3 + (5 * _maxLZs))
     setNumberOfRows(_numberOfRows)
 
-    const _outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
+    const _outerGridHeight = height - toolbarHeight - rowHeightPadding
     setOuterGridHeight(_outerGridHeight)
     const _rowHeight = ((Math.floor(_outerGridHeight / _numberOfRows)) - 2)
     setRowHeight(_rowHeight)
@@ -198,7 +198,7 @@ export default function RatingForm( { _data } ) {
       </ButtonGroup>
       <Paper elevation={0} square style={{width: '100%', height: innerGridHeight, overflowY: 'auto'}} >
       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
-        <Button style={{width: labelWidth}}>Length</Button>
+        <Button style={{height: rowHeight, width: labelWidth}}>Length</Button>
         {tees.map((tee, index) => {
           return (
             <Button style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].length}</Button>

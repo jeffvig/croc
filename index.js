@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import './style.css';
 import {useLocalState} from './hooks';
 import Zones from './Zones';
 import Ratings from './Ratings';
 import RatingForm from './Components/RatingForm';
+import RatingSettings from './Components/RatingSettings';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -110,36 +111,51 @@ const App = () => {
 
   const [fruit, setFruit] = useLocalState('Fruit');
 
-  //Create data object
-  const _data = JSON.parse(JSON.stringify(data_model))
-  const _holeArray = [];
-  for (let holeNumber = 0; holeNumber < 19; holeNumber++) {
-    if (holeNumber > 0) {
-      const _teeArray = [];
-      for (let teeNumber = 0; teeNumber < tees.length; teeNumber++) {
+  const createDataObject = () => {
+    //Create data object
+    const _data = JSON.parse(JSON.stringify(data_model))
+    const _holeArray = [];
+    for (let holeNumber = 0; holeNumber < 19; holeNumber++) {
+      if (holeNumber > 0) {
+        const _teeArray = [];
+        for (let teeNumber = 0; teeNumber < tees.length; teeNumber++) {
+          const _tee = JSON.parse(JSON.stringify(tee_model))
+          _tee.name = tees[teeNumber].name
+          _tee.length = tees[teeNumber].length
+          _tee.scratch = {...hole_model}
+          _tee.bogey = {...hole_model}
+          _teeArray.push(_tee)
+      //    console.log('_teeArray: ', _teeArray)
+        }
+        _holeArray.push(_teeArray)
+      } else {
+        const _teeArray = [];
         const _tee = JSON.parse(JSON.stringify(tee_model))
-        _tee.name = tees[teeNumber].name
-        _tee.length = tees[teeNumber].length
-        _tee.scratch = {...hole_model}
-        _tee.bogey = {...hole_model}
+        _tee.name = 'Empty'
+        _tee.length = 0
+        _tee.scratch = {}
+        _tee.bogey = {}
         _teeArray.push(_tee)
-    //    console.log('_teeArray: ', _teeArray)
+        _holeArray.push(_teeArray)
       }
-      _holeArray.push(_teeArray)
-    } else {
-      const _teeArray = [];
-      const _tee = JSON.parse(JSON.stringify(tee_model))
-      _tee.name = 'Empty'
-      _tee.length = 0
-      _tee.scratch = {}
-      _tee.bogey = {}
-      _teeArray.push(_tee)
-      _holeArray.push(_teeArray)
     }
+    _data.hole = _holeArray
+    console.log('_data: ', _data)
+    setData(_data)
   }
-  _data.hole = _holeArray
-  console.log('_data: ', _data)
 
+  useEffect(() => {
+    createDataObject()
+  },[]);
+  
+    const ondatachanges = (_data) => {
+      setData(_data)
+      console.log('Index - ondatachanges - data: ', _data)
+    //console.log('bottomNav received: ', playerList)
+    // setPlayers(playerList)
+    // setValue(0)
+  }
+    
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -188,8 +204,18 @@ const App = () => {
           spacing={1}
       >
         <Grid item xs={12 }>
-            <RatingForm />
+            <RatingForm 
+              _data={data} 
+            />
         </Grid>
+        {/* 
+        <Grid item xs={12 } hidden={true} >
+            <RatingSettings 
+              _data={data} 
+              onDataChange={(e) => { ondatachanges(e) }} 
+            />
+        </Grid>
+        */}
       </Grid>
         <Grid item xs={2} hidden={true}>
             <Zones />

@@ -112,38 +112,50 @@ export default function RatingForm( { _data } ) {
   let outerGridHeight = 1
   let rowHeight = 1
   let innerGridHeight = 1
+  let numberOfRows = 1
+  let maxLZs = 0
+  let longestTee = 1
 
   let driveLength = 200
   let subsequentShotLength = 170
+
+  const calculateDimensions = (_data, height, width) => {
+    //console.log('calculateDimensions', height, width, _data)
+
+    //console.log('tees length: ', _data.hole[_data.currentHole].tee.length)
+    cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (_data.hole[_data.currentHole].tee.length * 2))
+    labelWidth = dimensions.width - widthPadding - (cellWidth * (_data.hole[_data.currentHole].tee.length * 2))
+
+    if (_data.gender === 'M') {
+      driveLength = 200
+      subsequentShotLength = 170
+    } else {
+      driveLength = 150
+      subsequentShotLength = 130
+    }
+
+    longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
+    maxLZs = ( longestTee < driveLength ? 0 : (Math.floor((longestTee - driveLength) / subsequentShotLength)) + 1 )
+    numberOfRows = 3 + (5 * maxLZs)
+
+    outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
+    rowHeight = ((Math.floor(outerGridHeight / numberOfRows)) - 2)
+    innerGridHeight = (rowHeight * numberOfRows) - rowHeight + 2
+
+    console.log('numberOfRows: ', numberOfRows)
+    console.log('outerGridHeight: ', outerGridHeight)
+    console.log('rowHeight: ', rowHeight)
+    console.log('innerGridHeight: ', innerGridHeight)
+  }
 
   useEffect(() => {
     if (_data.hasOwnProperty('hole')) {
       // console.log('RF - UE - _data: ', _data)
       setData(_data)
-
-      //console.log('tees length: ', _data.hole[_data.currentHole].tee.length)
-      cellWidth = Math.floor(((dimensions.width - widthPadding) * .7) / (_data.hole[_data.currentHole].tee.length * 2))
-      labelWidth = dimensions.width - widthPadding - (cellWidth * (_data.hole[_data.currentHole].tee.length * 2))
-
-      if (_data.gender === 'M') {
-        driveLength = 200
-        subsequentShotLength = 170
-      } else {
-        driveLength = 150
-        subsequentShotLength = 130
-      }
-
-      const longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
-      const maxLZs = ( longestTee < driveLength ? 1 : (Math.floor((999 - driveLength) / subsequentShotLength)) + 2 )
-      console.log('maxLZs: ', maxLZs)
-
-    //Line height of 23 + (5 * maxLZs)
-      outerGridHeight = dimensions.height - toolbarHeight - rowHeightPadding
-      rowHeight = ((Math.floor(outerGridHeight / 2)) - 2)
-      innerGridHeight = (rowHeight * 2) - rowHeight + 2
+      calculateDimensions(_data, dimensions.height,  dimensions.width)
 
     } else {
-      //console.log('RF - UE - null _data: ', _data)
+      console.log('RF - UE - null _data: ', _data)
     }
   },[_data]);
 
@@ -153,6 +165,7 @@ export default function RatingForm( { _data } ) {
         height: window.innerHeight,
         width: window.innerWidth
       })
+      calculateDimensions(_data, window.innerHeight, window.innerWidth)
       //console.log('screen height: ', dimensions.height, 'screen width: ', dimensions.width)
     }, 1000)
 
@@ -165,13 +178,15 @@ export default function RatingForm( { _data } ) {
 
 //  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
 
+  if (!data.hasOwnProperty('hole')) return (<div>Rendered at {dimensions.width} x {dimensions.height}</div>)
+
   return (
     <Paper elevation={0} style={{width: '100%', height: outerGridHeight, overflowY: 'auto'}} className={classes.paper}>
       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
         <Button style={{height: rowHeight, width: labelWidth}}>Tee</Button>
         {tees.map((tee, index) => {
           return (
-            <Button style={{width: cellWidth * 2}}>{tees[index].name}</Button>
+            <Button style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].name}</Button>
           );
         })}
       </ButtonGroup>
@@ -180,7 +195,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{width: labelWidth}}>Length</Button>
         {tees.map((tee, index) => {
           return (
-            <Button style={{height: rowHeight, width: cellWidth * 2}}>{tees[index].length}</Button>
+            <Button style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].length}</Button>
           );
         })}
       </ButtonGroup>

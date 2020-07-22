@@ -209,13 +209,13 @@ const App = () => {
             />
         </Grid>
         {/* 
+        */}
         <Grid item xs={12 } hidden={true} >
             <RatingSettings 
               _data={data} 
               onDataChange={(e) => { ondatachanges(e) }} 
             />
         </Grid>
-        */}
       </Grid>
         <Grid item xs={2} hidden={true}>
             <Zones />

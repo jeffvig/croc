@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import {useLocalState} from './hooks';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +13,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     height: 60,
     float: "right",
+  },
+  inputbutton: {
+    borderWidth: '1px', 
+    borderStyle: 'solid', 
+    borderColor: 'black',
+    minWidth: '1px',    
   }
 }))
 
@@ -137,7 +143,7 @@ export default function RatingForm( { _data } ) {
     longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
     const _maxLZs = ( longestTee < driveLength ? 0 : (Math.floor((longestTee - driveLength) / subsequentShotLength)) + 1 )
     setMaxLZs(_maxLZs)
-    const _numberOfRows = (3 + (5 * _maxLZs))
+    const _numberOfRows = (23 + (5 * _maxLZs))
     setNumberOfRows(_numberOfRows)
 
     const _outerGridHeight = height - toolbarHeight - rowHeightPadding
@@ -146,12 +152,12 @@ export default function RatingForm( { _data } ) {
     setRowHeight(_rowHeight)
     setInnerGridHeight((_rowHeight * _numberOfRows) - _rowHeight + 2)
 
-    console.log('height: ', height)
-    console.log('width: ', width)
-    console.log('numberOfRows: ', numberOfRows)
-    console.log('outerGridHeight: ', outerGridHeight)
-    console.log('rowHeight: ', rowHeight)
-    console.log('innerGridHeight: ', innerGridHeight)
+    // console.log('height: ', height)
+    // console.log('width: ', width)
+    // console.log('numberOfRows: ', numberOfRows)
+    // console.log('outerGridHeight: ', outerGridHeight)
+    // console.log('rowHeight: ', rowHeight)
+    // console.log('innerGridHeight: ', innerGridHeight)
   }
 
   useEffect(() => {
@@ -201,7 +207,40 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Length</Button>
         {tees.map((tee, index) => {
           return (
-            <Button style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].length}</Button>
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].length}</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Width x Depth</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Eff. Diameter</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Roll</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
           );
         })}
       </ButtonGroup>

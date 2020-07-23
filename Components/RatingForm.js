@@ -143,7 +143,7 @@ export default function RatingForm( { _data } ) {
     longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
     const _maxLZs = ( longestTee < driveLength ? 0 : (Math.floor((longestTee - driveLength) / subsequentShotLength)) + 1 )
     setMaxLZs(_maxLZs)
-    const _numberOfRows = (23 + (5 * _maxLZs))
+    const _numberOfRows = (24 + (6 * _maxLZs))
     setNumberOfRows(_numberOfRows)
 
     const _outerGridHeight = height - toolbarHeight - rowHeightPadding
@@ -152,6 +152,7 @@ export default function RatingForm( { _data } ) {
     setRowHeight(_rowHeight)
     setInnerGridHeight((_rowHeight * _numberOfRows) - _rowHeight + 2)
 
+    console.log('maxLZs: ', maxLZs)
     // console.log('height: ', height)
     // console.log('width: ', width)
     // console.log('numberOfRows: ', numberOfRows)
@@ -244,6 +245,772 @@ export default function RatingForm( { _data } ) {
           );
         })}
       </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Dogleg / Layup</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>TOPOGRAPHY</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Approach Elevation</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Stance</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      {maxLZs > 0 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ1</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 1 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ2</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 2 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ3</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 3 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ4</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 4 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ5</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 5 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ6</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 6 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ7</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>FAIRWAY</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      {maxLZs > 0 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ1</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 1 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ2</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 2 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ3</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 3 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ4</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 4 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ5</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 5 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ6</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 6 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ7</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>GREEN TARGET</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      {maxLZs > 0 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 1</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 1 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 2</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 2 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 3</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 3 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 4</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 4 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 5</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 5 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 6</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 6 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 7</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>R & R</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Adjustments</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Adjs at Green</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>BUNKERS</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      {maxLZs > 0 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ1</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 1 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ2</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 2 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ3</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 3 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ4</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 4 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ5</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 5 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ6</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 6 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ7</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Bunker %</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Adjustments</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>CROSSING</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      {maxLZs > 0 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ1</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 1 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ2</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 2 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ3</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 3 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ4</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 4 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ5</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 5 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ6</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 6 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ7</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Crossing to Green</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>LATERAL</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      {maxLZs > 0 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ1</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 1 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ2</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 2 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ3</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 3 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ4</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 4 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ5</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 5 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ6</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      {maxLZs > 6 &&
+        <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+          <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ7</Button>
+          {tees.map((tee, index) => {
+            return (
+              <Fragment>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              </Fragment>
+            );
+          })}
+        </ButtonGroup>
+      }
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Lateral at Green</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>TREES</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Evaluation</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>Adjustments</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+      <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
+        <Button style={{height: rowHeight, width: labelWidth}}>GREEN SURFACE</Button>
+        {tees.map((tee, index) => {
+          return (
+            <Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+            </Fragment>
+          );
+        })}
+      </ButtonGroup>
+
       {/*
       <div>dimension.height: {JSON.stringify(dimensions.height)}</div>
       <div>rowHeight: {JSON.stringify(rowHeight)}</div>

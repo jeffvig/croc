@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
 // });
 
 const tees = [
-              { name: 'Black', length: '369'},
+              { name: 'Black', length: '371'},
               { name: 'Blue', length: '329'},
               { name: 'White', length: '286'},
               { name: 'Red', length: '256'},

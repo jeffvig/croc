@@ -24,17 +24,18 @@ export default function RatingSettings( { _data, onDataChange } ) {
         _data.green_speed = 4
         _data.rought_height = 3
         let hole = 1
-        let tee = 0
-        _data.hole[hole].tee[tee].SCR.green_target[0] = (_data.hole[hole].tee[tee].length < constants.shot_length[_data.gender]['SCR']['DRV'] ? 0 : _data.hole[hole].tee[tee].length - constants.shot_length[_data.gender]['SCR']['DRV'])
-        for (let lz = 1; lz < 10; lz++) {
-          _data.hole[hole].tee[tee].SCR.green_target[lz] = (_data.hole[hole].tee[tee].SCR.green_target[(lz-1)] < constants.shot_length[_data.gender]['SCR']['NXT'] ? 0 : _data.hole[hole].tee[tee].SCR.green_target[(lz-1)] - constants.shot_length[_data.gender]['SCR']['NXT'])
-          if (_data.hole[hole].tee[tee].SCR.green_target[lz] === 0) lz=10   //No more - get out
-        }
+        for (let tee = 0; tee < _data.hole[hole].tee.length; tee++) {
+          _data.hole[hole].tee[tee].SCR.green_target[0] = (_data.hole[hole].tee[tee].length < constants.shot_length[_data.gender]['SCR']['DRV'] ? 0 : _data.hole[hole].tee[tee].length - constants.shot_length[_data.gender]['SCR']['DRV'])
+          for (let lz = 1; lz < 10; lz++) {
+            _data.hole[hole].tee[tee].SCR.green_target[lz] = (_data.hole[hole].tee[tee].SCR.green_target[(lz-1)] < constants.shot_length[_data.gender]['SCR']['NXT'] ? 0 : _data.hole[hole].tee[tee].SCR.green_target[(lz-1)] - constants.shot_length[_data.gender]['SCR']['NXT'])
+            if (_data.hole[hole].tee[tee].SCR.green_target[lz] === 0) lz=10   //No more - get out
+          }
 
-        _data.hole[hole].tee[tee].BGY.green_target[0] = (_data.hole[hole].tee[tee].length < constants.shot_length[_data.gender]['BGY']['DRV'] ? 0 : _data.hole[hole].tee[tee].length - constants.shot_length[_data.gender]['BGY']['DRV'])
-        for (let lz = 1; lz < 10; lz++) {
-          _data.hole[hole].tee[tee].BGY.green_target[lz] = (_data.hole[hole].tee[tee].BGY.green_target[(lz-1)] < constants.shot_length[_data.gender]['BGY']['NXT'] ? 0 : _data.hole[hole].tee[tee].BGY.green_target[(lz-1)] - constants.shot_length[_data.gender]['BGY']['NXT'])
-          if (_data.hole[hole].tee[tee].BGY.green_target[lz] === 0) lz=10   //No more - get out
+          _data.hole[hole].tee[tee].BGY.green_target[0] = (_data.hole[hole].tee[tee].length < constants.shot_length[_data.gender]['BGY']['DRV'] ? 0 : _data.hole[hole].tee[tee].length - constants.shot_length[_data.gender]['BGY']['DRV'])
+          for (let lz = 1; lz < 10; lz++) {
+            _data.hole[hole].tee[tee].BGY.green_target[lz] = (_data.hole[hole].tee[tee].BGY.green_target[(lz-1)] < constants.shot_length[_data.gender]['BGY']['NXT'] ? 0 : _data.hole[hole].tee[tee].BGY.green_target[(lz-1)] - constants.shot_length[_data.gender]['BGY']['NXT'])
+            if (_data.hole[hole].tee[tee].BGY.green_target[lz] === 0) lz=10   //No more - get out
+          }
         }
 
         console.log('j: ',constants.shot_length[_data.gender]['BGY']['NXT'], _data)

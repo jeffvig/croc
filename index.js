@@ -74,7 +74,7 @@ const useStyles = makeStyles(theme => ({
 // });
 
 const tees = [
-              { name: 'Black', length: '389'},
+              { name: 'Black', length: '541'},
               { name: 'Blue', length: '329'},
               { name: 'White', length: '286'},
               { name: 'Red', length: '256'},
@@ -156,14 +156,22 @@ const App = () => {
     createDataObject()
   },[]);
   
+  useEffect(() => {
+           console.log('_data.gender:', _data.gender)
+  },[data]);
+  
     const ondatachanges = (_data) => {
       setData(_data)
-      // console.log('Index - ondatachanges - data: ', _data)
+       console.log('Index - ondatachanges - data: ', _data)
+           console.log('_data.gender:', _data.gender)
+
     //console.log('bottomNav received: ', playerList)
     // setPlayers(playerList)
     // setValue(0)
   }
     
+    console.log('data.gender:', data.gender)
+
   return (
     <ThemeProvider theme={theme}>
       <div className={classes.root}>
@@ -193,7 +201,7 @@ const App = () => {
               Par 4
             </Typography>
             <Typography variant="h6" className={classes.title}>
-              {data.gender === 'M' ? 'M' : 'Wom'}en's Tees
+              {data.gender == 'MEN' ? 'Men' : 'Women'}'s Tees
             </Typography>
             <IconButton edge="end" className={classes.settingsButton} color="inherit">
               <AssignmentIcon />

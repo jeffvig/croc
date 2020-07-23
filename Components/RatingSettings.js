@@ -39,8 +39,6 @@ export default function RatingSettings( { _data, onDataChange } ) {
           }
         }
 
-        console.log('j: ',constants.shot_length[_data.gender]['BGY']['NXT'], _data)
-
         // console.log('RS - UE(_data) - after - _data: ', _data)
         // setData(prevState => ({
         //   ...prevState, gender: 'M'

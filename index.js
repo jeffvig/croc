@@ -157,13 +157,13 @@ const App = () => {
   },[]);
   
   useEffect(() => {
-           console.log('_data.gender:', _data.gender)
+           console.log('Index - UE(data)data.gender:', data.gender)
   },[data]);
   
-    const ondatachanges = (_data) => {
-      setData(_data)
-       console.log('Index - ondatachanges - data: ', _data)
-           console.log('_data.gender:', _data.gender)
+  const ondatachanges = (_data) => {
+    setData(_data)
+      console.log('Index - ondatachanges - data: ', _data)
+          console.log('_data.gender:', _data.gender)
 
     //console.log('bottomNav received: ', playerList)
     // setPlayers(playerList)

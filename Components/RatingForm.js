@@ -159,16 +159,9 @@ export default function RatingForm( { _data } ) {
     const _labelWidth = width - widthPadding - (_cellWidth * (_data.hole[_data.currentHole].tee.length * 2))
     setLabelWidth(_labelWidth)
 
-    if (_data.gender === 'M') {
-      driveLength = 200
-      subsequentShotLength = 170
-    } else {
-      driveLength = 150
-      subsequentShotLength = 130
-    }
-
     longestTee = _data.hole[_data.currentHole].tee.reduce(maxLength, -Infinity)
-    const _maxLZs = ( longestTee < driveLength ? 0 : (Math.floor((longestTee - driveLength) / subsequentShotLength)) + 1 )
+    console.log('shot_length: ', constants.shot_length, _data)
+    const _maxLZs = ( longestTee < constants.shot_length[_data.gender]['BGY']['DRV'] ? 0 : (Math.floor((longestTee - constants.shot_length[_data.gender]['BGY']['DRV']) / constants.shot_length[_data.gender]['BGY']['NXT'])) + 1 )
     setMaxLZs(_maxLZs)
     const _numberOfRows = (24 + (6 * _maxLZs))
     setNumberOfRows(_numberOfRows)
@@ -192,7 +185,9 @@ export default function RatingForm( { _data } ) {
     if (_data.hasOwnProperty('hole')) {
       // console.log('RF - UE - _data: ', _data)
       setData(_data)
-      calculateDimensions(_data, dimensions.height,  dimensions.width)
+      if (_data.gender !== '') {
+        calculateDimensions(_data, dimensions.height,  dimensions.width)
+      }
 
     } else {
       // console.log('RF - UE - null _data: ', _data)
@@ -484,7 +479,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 3</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(2, ptr)}</Button>
             );
           })}
         </ButtonGroup>
@@ -494,7 +489,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 4</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(3, ptr)}</Button>
             );
           })}
         </ButtonGroup>
@@ -504,7 +499,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 5</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(4, ptr)}</Button>
             );
           })}
         </ButtonGroup>
@@ -514,7 +509,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 6</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(5, ptr)}</Button>
             );
           })}
         </ButtonGroup>
@@ -524,7 +519,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 7</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(6, ptr)}</Button>
             );
           })}
         </ButtonGroup>

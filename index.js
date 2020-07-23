@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
 // });
 
 const tees = [
-              { name: 'Black', length: '444'},
+              { name: 'Black', length: '389'},
               { name: 'Blue', length: '329'},
               { name: 'White', length: '286'},
               { name: 'Red', length: '256'},
@@ -127,8 +127,8 @@ const App = () => {
           _tee.scratch = {...hole_model}
           _tee.bogey = {...hole_model}
           _teeArray.push(_tee)
-          const _teeIndexS = {ptr: 'S' + teeNumber}
-          const _teeIndexB = {ptr: 'B' + teeNumber}
+          const _teeIndexS = 'S' + teeNumber
+          const _teeIndexB = 'B' + teeNumber
           _teeIndexArray.push(_teeIndexS)
           _teeIndexArray.push(_teeIndexB)
       //    console.log('_teeArray: ', _teeArray)
@@ -146,7 +146,7 @@ const App = () => {
       }
     }
     _data.hole = _holeArray
-    // console.log('_data: ', _data)
+    //  console.log('_data: ', _data)
     setData(_data)
   }
 

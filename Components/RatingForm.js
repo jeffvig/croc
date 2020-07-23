@@ -208,9 +208,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Length</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].length}</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>{data.hole[data.currentHole].tee[index].length}</Button>
           );
         })}
       </ButtonGroup>
@@ -218,9 +216,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Width x Depth</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -228,20 +224,15 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Eff. Diameter</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
       <ButtonGroup color="black" variant="contained" style={{marginBottom: '1px'}}>
         <Button style={{height: rowHeight, width: labelWidth}}>Roll</Button>
-        {tees.map((tee, index) => {
+        {data[data.currentHole].ptr.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -249,10 +240,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Dogleg / Layup</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -260,10 +248,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>TOPOGRAPHY</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -271,10 +256,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Approach Elevation</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -282,10 +264,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Stance</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -294,10 +273,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ1</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -307,10 +283,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ2</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -320,10 +293,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ3</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -333,10 +303,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ4</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -346,10 +313,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ5</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -359,10 +323,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ6</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -372,10 +333,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Stance in LZ7</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -384,10 +342,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>FAIRWAY</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -396,10 +351,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ1</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -409,10 +361,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ2</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -422,10 +371,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ3</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -435,10 +381,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ4</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -448,10 +391,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ5</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -461,10 +401,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ6</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -474,10 +411,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Fairway in LZ7</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -486,10 +420,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>GREEN TARGET</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -498,10 +429,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 1</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -511,10 +439,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 2</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -524,10 +449,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 3</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -537,10 +459,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 4</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -550,10 +469,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 5</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -563,10 +479,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 6</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -576,10 +489,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Landing Zone 7</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -588,10 +498,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>R & R</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -599,10 +506,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Adjustments</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -610,10 +514,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Adjs at Green</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -621,10 +522,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>BUNKERS</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -633,10 +531,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ1</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -646,10 +541,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ2</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -659,10 +551,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ3</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -672,10 +561,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ4</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -685,10 +571,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ5</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -698,10 +581,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ6</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -711,10 +591,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Bunker in LZ7</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -723,9 +600,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Bunker %</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -733,10 +608,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Adjustments</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -744,10 +616,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>CROSSING</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -756,10 +625,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ1</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -769,10 +635,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ2</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -782,10 +645,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ3</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -795,10 +655,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ4</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -808,10 +665,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ5</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -821,10 +675,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ6</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -834,10 +685,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Crossing to LZ7</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -846,10 +694,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Crossing to Green</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -857,10 +702,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>LATERAL</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -869,10 +711,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ1</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -882,10 +721,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ2</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -895,10 +731,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ3</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -908,10 +741,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ4</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -921,10 +751,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ5</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -934,10 +761,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ6</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -947,10 +771,7 @@ export default function RatingForm( { _data } ) {
           <Button style={{height: rowHeight, width: labelWidth}}>Lateral at LZ7</Button>
           {tees.map((tee, index) => {
             return (
-              <Fragment>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-                <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              </Fragment>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
             );
           })}
         </ButtonGroup>
@@ -959,10 +780,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Lateral at Green</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -970,10 +788,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>TREES</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -981,10 +796,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Evaluation</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -992,10 +804,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>Adjustments</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
           );
         })}
       </ButtonGroup>
@@ -1003,10 +812,7 @@ export default function RatingForm( { _data } ) {
         <Button style={{height: rowHeight, width: labelWidth}}>GREEN SURFACE</Button>
         {tees.map((tee, index) => {
           return (
-            <Fragment>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
-            </Fragment>
+            <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth * 2}}>{outerGridHeight}</Button>
           );
         })}
       </ButtonGroup>

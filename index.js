@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
 // });
 
 const tees = [
-              { name: 'Black', length: '371'},
+              { name: 'Black', length: '444'},
               { name: 'Blue', length: '329'},
               { name: 'White', length: '286'},
               { name: 'Red', length: '256'},
@@ -119,6 +119,7 @@ const App = () => {
     for (let holeNumber = 0; holeNumber < 19; holeNumber++) {
       if (holeNumber > 0) {
         const _teeArray = [];
+        const _teeIndexArray = [];
         for (let teeNumber = 0; teeNumber < tees.length; teeNumber++) {
           const _tee = JSON.parse(JSON.stringify(tee_model))
           _tee.name = tees[teeNumber].name
@@ -126,9 +127,13 @@ const App = () => {
           _tee.scratch = {...hole_model}
           _tee.bogey = {...hole_model}
           _teeArray.push(_tee)
+          const _teeIndexS = {ptr: 'S' + teeNumber}
+          const _teeIndexB = {ptr: 'B' + teeNumber}
+          _teeIndexArray.push(_teeIndexS)
+          _teeIndexArray.push(_teeIndexB)
       //    console.log('_teeArray: ', _teeArray)
         }
-        _holeArray.push({rating: 'true', tee: _teeArray})
+        _holeArray.push({rating: 'true', tee: _teeArray, ptr: _teeIndexArray})
       } else {
         const _teeArray = [];
         const _tee = JSON.parse(JSON.stringify(tee_model))

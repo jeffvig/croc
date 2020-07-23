@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import useWindowSize from '../WindowSizeHook'
+import * as constants from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   titleItemRight: {
@@ -218,7 +219,11 @@ export default function RatingForm( { _data } ) {
 //  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
 
   const greenTarget = (_lz, _ptr) => {
-    return 'bobo'
+    //console.log('data: ', data)
+    const tee = _ptr.slice(-1)
+    const type = _ptr.slice(0,3)
+    //console.log('stuff: ', tee, type, data.hole[data.currentHole].tee[tee])
+    return (data.hole[data.currentHole].tee[tee][type].green_target[_lz] > 0 ? data.hole[data.currentHole].tee[tee][type].green_target[_lz] : '')
   }
 
   if (!data.hasOwnProperty('hole')) return (<div>Rendered at {dimensions.width} x {dimensions.height}</div>)
@@ -459,7 +464,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 1</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(1, ptr)}</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(0, ptr)}</Button>
             );
           })}
         </ButtonGroup>
@@ -469,7 +474,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 2</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>&nbsp;</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(1, ptr)}</Button>
             );
           })}
         </ButtonGroup>

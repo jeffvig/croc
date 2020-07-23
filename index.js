@@ -18,6 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import theme from './theme';    
+import * as constants from '../constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -86,15 +87,16 @@ const hole_model =
   green_depth: 0,
   green_shape: '',
   green_eff_diameter: 0,
+  green_target: [0,0,0,0,0,0,0,0,0]
 }
 
 const tee_model = 
 {
   name: '',
   length: '',
-  scratch: {
+  SCR: {
   },
-  bogey: {
+  BGY: {
   }
 }
 
@@ -124,13 +126,13 @@ const App = () => {
           const _tee = JSON.parse(JSON.stringify(tee_model))
           _tee.name = tees[teeNumber].name
           _tee.length = tees[teeNumber].length
-          _tee.scratch = {...hole_model}
-          _tee.bogey = {...hole_model}
+          _tee.SCR = JSON.parse(JSON.stringify(hole_model))
+          _tee.BGY = JSON.parse(JSON.stringify(hole_model))
           _teeArray.push(_tee)
-          const _teeIndexS = 'S' + teeNumber
-          const _teeIndexB = 'B' + teeNumber
-          _teeIndexArray.push(_teeIndexS)
-          _teeIndexArray.push(_teeIndexB)
+          const _teeIndexSCR = 'SCR' + teeNumber
+          const _teeIndexBGY = 'BGY' + teeNumber
+          _teeIndexArray.push(_teeIndexSCR)
+          _teeIndexArray.push(_teeIndexBGY)
       //    console.log('_teeArray: ', _teeArray)
         }
         _holeArray.push({rating: 'true', tee: _teeArray, ptr: _teeIndexArray})
@@ -139,8 +141,8 @@ const App = () => {
         const _tee = JSON.parse(JSON.stringify(tee_model))
         _tee.name = 'Empty'
         _tee.length = 0
-        _tee.scratch = {}
-        _tee.bogey = {}
+        _tee.SCR = {}
+        _tee.BGY = {}
         _teeArray.push(_tee)
         _holeArray.push(_teeArray)
       }

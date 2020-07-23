@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import * as constants from '../constants';
 
 const useStyles = makeStyles((theme) => ({
   titleItemRight: {
@@ -15,18 +16,35 @@ export default function RatingSettings( { _data, onDataChange } ) {
   const [data, setData] = useState({})
 
   useEffect(() => {
-    // console.log('RS - UE(_data) - before - _data: ', _data)
-    if (_data.gender !== 'W') {
-      _data.gender = 'W'
-      _data.team_members = 'Tom, Dick and Harry'
-      _data.green_speed = 4
-      _data.rought_height = 3
+    if (_data.hasOwnProperty('hole')) {
+     //console.log('RS - UE(_data) - before - _data: ', _data)
+      if (_data.gender !== 'WMN') {
+        _data.gender = 'WMN'
+        _data.team_members = 'Tom, Dick and Harry'
+        _data.green_speed = 4
+        _data.rought_height = 3
+        let hole = 1
+        let tee = 0
+        _data.hole[hole].tee[tee].SCR.green_target[0] = (_data.hole[hole].tee[tee].length < constants.shot_length[_data.gender]['SCR']['DRV'] ? 0 : _data.hole[hole].tee[tee].length - constants.shot_length[_data.gender]['SCR']['DRV'])
+        for (let lz = 1; lz < 10; lz++) {
+          _data.hole[hole].tee[tee].SCR.green_target[lz] = (_data.hole[hole].tee[tee].SCR.green_target[(lz-1)] < constants.shot_length[_data.gender]['SCR']['NXT'] ? 0 : _data.hole[hole].tee[tee].SCR.green_target[(lz-1)] - constants.shot_length[_data.gender]['SCR']['NXT'])
+          if (_data.hole[hole].tee[tee].SCR.green_target[lz] === 0) lz=10   //No more - get out
+        }
 
-      // console.log('RS - UE(_data) - after - _data: ', _data)
-      // setData(prevState => ({
-      //   ...prevState, gender: 'M'
-      // }))
-      setData(_data)
+        _data.hole[hole].tee[tee].BGY.green_target[0] = (_data.hole[hole].tee[tee].length < constants.shot_length[_data.gender]['BGY']['DRV'] ? 0 : _data.hole[hole].tee[tee].length - constants.shot_length[_data.gender]['BGY']['DRV'])
+        for (let lz = 1; lz < 10; lz++) {
+          _data.hole[hole].tee[tee].BGY.green_target[lz] = (_data.hole[hole].tee[tee].BGY.green_target[(lz-1)] < constants.shot_length[_data.gender]['BGY']['NXT'] ? 0 : _data.hole[hole].tee[tee].BGY.green_target[(lz-1)] - constants.shot_length[_data.gender]['BGY']['NXT'])
+          if (_data.hole[hole].tee[tee].BGY.green_target[lz] === 0) lz=10   //No more - get out
+        }
+
+        console.log('j: ',constants.shot_length[_data.gender]['BGY']['NXT'], _data)
+
+        // console.log('RS - UE(_data) - after - _data: ', _data)
+        // setData(prevState => ({
+        //   ...prevState, gender: 'M'
+        // }))
+        setData(_data)
+      }
     }
   },[_data]);
 

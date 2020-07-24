@@ -1,12 +1,13 @@
-import React, { useState, useEffect, Fragment } from 'react';
-import {useLocalState} from './hooks';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+import React, { useState, useEffect, Fragment } from 'react'
+import {useLocalState} from './hooks'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import useWindowSize from '../WindowSizeHook'
-import * as constants from '../constants';
+import * as constants from '../constants'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 const useStyles = makeStyles((theme) => ({
   titleItemRight: {
@@ -212,6 +213,11 @@ export default function RatingForm( { _data } ) {
   }})
 
 //  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
+
+  const greeTargetClickHandler = (e, lz, ptr) => {
+    console.log('greeTargetClickHandler lz: ', lz)
+    console.log('greeTargetClickHandler ptr: ', ptr)
+  }
 
   const greenTarget = (_lz, _ptr) => {
     //console.log('data: ', data)
@@ -459,7 +465,7 @@ export default function RatingForm( { _data } ) {
           <Button className={classes.labelbutton} style={{height: rowHeight, width: labelWidth}}>Landing Zone 1</Button>
           {data.hole[data.currentHole].ptr.map((ptr, index) => {
             return (
-              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}}>{greenTarget(0, ptr)}</Button>
+              <Button className={classes.inputbutton} style={{height: rowHeight, width: cellWidth}} onClick={(e) => greeTargetClickHandler(e, 1, ptr)} >{greenTarget(0, ptr)}</Button>
             );
           })}
         </ButtonGroup>

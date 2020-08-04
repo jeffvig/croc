@@ -110,6 +110,7 @@ const data_model = {
 }
 const App = () => {
   const classes = useStyles();
+  const [currentPage, setCurrentPage] = useState('S')
   const [data, setData] = useState({})
 
   const [fruit, setFruit] = useLocalState('Fruit');
@@ -219,7 +220,7 @@ const App = () => {
           alignItems="flex-start"
           spacing={1}
       >
-        <Grid item xs={12 }>
+        <Grid item xs={12} hidden={currentPage === 'F' ? false : true} >
             <RatingForm 
               _data={data} 
               onDataChange={(e) => { ondatachanges(e) }} 
@@ -227,17 +228,17 @@ const App = () => {
         </Grid>
         {/* 
         */}
-        <Grid item xs={12 } hidden={true} >
+        <Grid item xs={12 } hidden={currentPage === 'S' ? false : true} >
             <RatingSettings 
               _data={data} 
               onDataChange={(e) => { ondatachanges(e) }} 
             />
         </Grid>
       </Grid>
-        <Grid item xs={2} hidden={true}>
+        <Grid item xs={2} hidden={currentPage === 'I' ? false : true} >
             <Zones />
         </Grid>
-        <Grid item xs={10} hidden={true}>
+        <Grid item xs={10} hidden={currentPage === 'I' ? false : true} >
             <Ratings />
         </Grid>
     </ThemeProvider>

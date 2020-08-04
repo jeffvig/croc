@@ -1,5 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import Checkbox from '@material-ui/core/Checkbox';
 import * as constants from '../constants';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RatingSettings( { _data, onDataChange } ) {
   const classes = useStyles();
+  const [gender, setGender] = React.useState('');
+  const [speed, setSpeed] = React.useState('');
+  const [grassType, setGrassType] = React.useState('C');
+  const [roughHeight, setRoughHeight] = React.useState('');
+  const [holeAssigned, setHoleAssigned] = React.useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   const [data, setData] = useState({})
 
   useEffect(() => {
@@ -54,7 +68,154 @@ export default function RatingSettings( { _data, onDataChange } ) {
     onDataChange(data)
   },[data]);
 
+  const handleGenderChange = (event) => {
+      setGender(event.target.value)
+      setRoughHeight('')
+  };
+
+  const handleSpeedChange = (event) => {
+      setSpeed(event.target.value)
+  };
+
+  const handleGrassTypeChange = (event) => {
+      setGrassType(event.target.value)
+      setRoughHeight('')
+  };
+
+  const handleRoughHeightChange = (event) => {
+      setRoughHeight(event.target.value)
+  }
+
+  const handleHoleAssignedChange = (event) => {
+    setHoleAssigned(true)
+  }
+
   return (
-    <div>Settings</div>
+    <Grid
+        container
+        direction="row"
+        justify="center"
+        spacing={1}
+    >
+      <Grid item xs={12}>
+        <Typography 
+          variant="h4"
+          gutterBottom
+          align='center'
+        >
+          Course and Hole Settings
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
+      </Grid>
+      <Grid item xs={6}>
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Gender</FormLabel>
+          <RadioGroup name="gender1" value={gender} onChange={handleGenderChange}>
+            <FormControlLabel value="M" control={<Radio />} label="Men" />
+            <FormControlLabel value="W" control={<Radio />} label="Women" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6}>
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Grass Type</FormLabel>
+          <RadioGroup name="grassType1" value={grassType} onChange={handleGrassTypeChange}>
+            <FormControlLabel value="C" control={<Radio />} label="Cool Season Grass" />
+            <FormControlLabel value="W" control={<Radio />} label="Warm Season Grass" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12}>
+        <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
+      </Grid>
+      <Grid item xs={6}>
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Green Speed</FormLabel>
+          <RadioGroup name="speed1" value={speed} onChange={handleSpeedChange}>
+            <FormControlLabel value="6" control={<Radio />} label="6&apos;11&quot; or Less" />
+            <FormControlLabel value="7" control={<Radio />} label="7&apos; to 8&apos;5&quot;" />
+            <FormControlLabel value="8" control={<Radio />} label="8&apos;6&quot; to 9&apos;11&quot;" />
+            <FormControlLabel value="10" control={<Radio />} label="10&apos; to 10&apos;11&quot;" />
+            <FormControlLabel value="11" control={<Radio />} label="11&apos; to 11&apos;11&quot;" />
+            <FormControlLabel value="12" control={<Radio />} label="12&apos; or More" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6} hidden={gender === 'M' && grassType ==='C' ? false : true} >
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Average Rought Height of Hole (in Inches)</FormLabel>
+          <RadioGroup name="speed1" value={roughHeight} onChange={handleRoughHeightChange}>
+            <FormControlLabel value="1" control={<Radio />} label="< 2&quot;" />
+            <FormControlLabel value="2" control={<Radio />} label="2&quot; to 3&quot;" />
+            <FormControlLabel value="3" control={<Radio />} label="3&quot; to 4&quot;" />
+            <FormControlLabel value="4" control={<Radio />} label="4&quot; to 5&quot;" />
+            <FormControlLabel value="5" control={<Radio />} label="> 6&quot;" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6} hidden={gender === 'M' && grassType ==='W' ? false : true} >
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Average Rought Height of Hole (in Inches)</FormLabel>
+          <RadioGroup name="speed1" value={roughHeight} onChange={handleRoughHeightChange}>
+            <FormControlLabel value="1" control={<Radio />} label="< 1&quot;" />
+            <FormControlLabel value="2" control={<Radio />} label="1&quot; to 2&quot;" />
+            <FormControlLabel value="3" control={<Radio />} label="2&quot; to 3&quot;" />
+            <FormControlLabel value="4" control={<Radio />} label="3&quot; to 4&quot;" />
+            <FormControlLabel value="5" control={<Radio />} label="> 4&quot;" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6} hidden={gender === 'W' && grassType ==='C' ? false : true} >
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Average Rought Height of Hole (in Inches)</FormLabel>
+          <RadioGroup name="speed1" value={roughHeight} onChange={handleRoughHeightChange}>
+            <FormControlLabel value="1" control={<Radio />} label="< 2&quot;" />
+            <FormControlLabel value="2" control={<Radio />} label="2&quot; to 2.5&quot;" />
+            <FormControlLabel value="3" control={<Radio />} label="2.5&quot; to 3.5&quot;" />
+            <FormControlLabel value="4" control={<Radio />} label="3.5&quot; to 5&quot;" />
+            <FormControlLabel value="5" control={<Radio />} label="> 5&quot;" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6} hidden={gender === 'W' && grassType ==='W' ? false : true} >
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Average Rought Height of Hole (in Inches)</FormLabel>
+          <RadioGroup name="speed1" value={roughHeight} onChange={handleRoughHeightChange}>
+            <FormControlLabel value="1" control={<Radio />} label="< 1&quot;" />
+            <FormControlLabel value="2" control={<Radio />} label="1&quot; to 1.5&quot;" />
+            <FormControlLabel value="3" control={<Radio />} label="1.5&quot; to 2&quot;" />
+            <FormControlLabel value="4" control={<Radio />} label="2&quot; to 3&quot;" />
+            <FormControlLabel value="5" control={<Radio />} label="> 3&quot;" />
+          </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12}>
+        <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
+      </Grid>
+       <Grid item xs={12}>
+        <Typography 
+          variant="h4"
+          gutterBottom
+          align='center'
+        >
+          Holes Assigned
+        </Typography>
+        
+       <FormGroup column>
+        {holeAssigned.map((assigned, hole) => {
+          return (
+            <FormControlLabel control={<Checkbox checked={holeAssigned[hole]} onChange={handleHoleAssignedChange} name={hole} />} label="Hole #{hole}" />
+          )
+        })}
+      </FormGroup>
+
+
+      </Grid>
+     <Grid item xs={12}>
+        <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
+      </Grid>
+    </Grid>
   )
 }

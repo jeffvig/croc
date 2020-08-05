@@ -9,6 +9,9 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import * as constants from '../constants';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,7 +29,8 @@ export default function RatingSettings( { _data, onDataChange } ) {
   const [speed, setSpeed] = React.useState('');
   const [grassType, setGrassType] = React.useState('C');
   const [roughHeight, setRoughHeight] = React.useState('');
-  const [holeAssigned, setHoleAssigned] = React.useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+  const [hole, setHole] = React.useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
+  const [tees, setTees] = useState(['black'])
   const [data, setData] = useState({})
 
   useEffect(() => {
@@ -87,14 +91,19 @@ export default function RatingSettings( { _data, onDataChange } ) {
   }
 
   const handleHoleAssignedChange = (event) => {
-    setHoleAssigned(true)
+    //setHoleAssigned(true)
+    console.log('event: ', event)
+  }
+
+  const addTee = (event) => {
+    setTees((prev) => ([...prev, 'new name']))
   }
 
   return (
     <Grid
         container
         direction="row"
-        justify="center"
+        justify="space-between"
         spacing={1}
     >
       <Grid item xs={12}>
@@ -141,6 +150,12 @@ export default function RatingSettings( { _data, onDataChange } ) {
             <FormControlLabel value="11" control={<Radio />} label="11&apos; to 11&apos;11&quot;" />
             <FormControlLabel value="12" control={<Radio />} label="12&apos; or More" />
           </RadioGroup>
+        </FormControl>
+      </Grid>
+      <Grid item xs={6} hidden={gender === '' || grassType ==='' ? false : true} >
+        <FormControl component="fieldset">
+          <FormLabel component="legend" style={{padding: '10px'}}>Average Rought Height of Hole (in Inches)</FormLabel>
+          <div style={{marginTop: 100}}>Both Gender and Grass Type must be selected</div>
         </FormControl>
       </Grid>
       <Grid item xs={6} hidden={gender === 'M' && grassType ==='C' ? false : true} >
@@ -194,26 +209,25 @@ export default function RatingSettings( { _data, onDataChange } ) {
       <Grid item xs={12}>
         <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
       </Grid>
-       <Grid item xs={12}>
+      <Grid item xs={12}>
         <Typography 
           variant="h4"
           gutterBottom
           align='center'
         >
-          Holes Assigned
+          Hole / Tee Distances
         </Typography>
-        
-       <FormGroup column>
-        {holeAssigned.map((assigned, hole) => {
-          return (
-            <FormControlLabel control={<Checkbox checked={holeAssigned[hole]} onChange={handleHoleAssignedChange} name={hole} />} label="Hole #{hole}" />
-          )
-        })}
-      </FormGroup>
-
-
+        <Button variant='contained' onClick={addTee}>Add Tee</Button>
+        {hole.map((value, hole) => {return(
+            <div>Hole #{hole+1}</div>
+            {
+              tees.map((name, index) => {return(
+                <Button>{name}</Button>
+              )
+            )}}
+        )})}
       </Grid>
-     <Grid item xs={12}>
+      <Grid item xs={12}>
         <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
       </Grid>
     </Grid>

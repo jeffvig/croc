@@ -12,6 +12,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
+import TextField from '@material-ui/core/TextField';
 import * as constants from '../constants';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +32,11 @@ export default function RatingSettings( { _data, onDataChange } ) {
   const [roughHeight, setRoughHeight] = React.useState('');
   const [hole, setHole] = React.useState([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]);
   const [tees, setTees] = useState(['black'])
+  const [teeName1, setTeeName1] = useState('')
+  const [teeName2, setTeeName2] = useState('')
+  const [teeName3, setTeeName3] = useState('')
+  const [teeName4, setTeeName4] = useState('')
+  const [teeName5, setTeeName5] = useState('')
   const [data, setData] = useState({})
 
   useEffect(() => {
@@ -91,6 +97,32 @@ export default function RatingSettings( { _data, onDataChange } ) {
   }
 
   const handleHoleAssignedChange = (event) => {
+    //setHoleAssigned(true)
+    console.log('event: ', event)
+  }
+
+  const handleTeeNameChange1 = (event) => {
+    //setHoleAssigned(true)
+    console.log('event: ', event)
+    setTeeName1(event.target.value)
+  }
+
+  const handleTeeNameChange2 = (event) => {
+    //setHoleAssigned(true)
+    console.log('event: ', event)
+  }
+
+  const handleTeeNameChange3 = (event) => {
+    //setHoleAssigned(true)
+    console.log('event: ', event)
+  }
+
+  const handleTeeNameChange4 = (event) => {
+    //setHoleAssigned(true)
+    console.log('event: ', event)
+  }
+
+  const handleTeeNameChange5 = (event) => {
     //setHoleAssigned(true)
     console.log('event: ', event)
   }
@@ -215,16 +247,28 @@ export default function RatingSettings( { _data, onDataChange } ) {
           gutterBottom
           align='center'
         >
+          Tee Names
+        </Typography>
+        <TextField id="teeName1" value={teeName1} variant="outlined" fullWidth size='small' onchange={handleTeeNameChange1} />
+        <TextField id="teeName2" value={teeName2} variant="outlined" fullWidth size='small' onchange={handleTeeNameChange2} />
+        <TextField id="teeName3" value={teeName3} variant="outlined" fullWidth size='small' onchange={handleTeeNameChange3} />
+        <TextField id="teeName4" value={teeName4} variant="outlined" fullWidth size='small' onchange={handleTeeNameChange4} />
+        <TextField id="teeName5" value={teeName5} variant="outlined" fullWidth size='small' onchange={handleTeeNameChange5} />
+      </Grid>
+      <Grid item xs={12}>
+        <hr style={{ color: '#000000', backgroundColor: '#000000', height: .5, borderColor : '#000000' }} />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography 
+          variant="h4"
+          gutterBottom
+          align='center'
+        >
           Hole / Tee Distances
         </Typography>
         <Button variant='contained' onClick={addTee}>Add Tee</Button>
         {hole.map((value, hole) => {return(
             <div>Hole #{hole+1}</div>
-            {
-              tees.map((name, index) => {return(
-                <Button>{name}</Button>
-              )
-            )}}
         )})}
       </Grid>
       <Grid item xs={12}>
